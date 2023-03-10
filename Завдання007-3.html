@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання007-3</title>
+    <style>
+        div {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+        /*
+        Завдання:
+        Реалізуйте сценарій, який під час натискання на клавіші 1, 2 або 3 на клавіатурі додаватиме рамку
+        червоного кольору на відповідний div. Якщо затиснуто клавіші Ctrl + A, то червона рамка додається відразу
+        для всіх div.
+        */
+
+        const divs = document.querySelectorAll("div");
+        document.addEventListener("keydown", event => {
+            const key = event.keyCode;
+
+            switch(key){
+                case 49:
+                case 50:
+                case 51:{
+                    const index = key - 49;
+                    divs[index].style.border = "2px solid red";
+                    break;
+            }
+            case 65: {
+                if(event.ctrlKey){
+                    for(const div of divs){
+                        div.style.border = "2px solid red";
+                    }
+                }
+                break
+            }
+            default:
+                break;
+        }
+
+        });
+    </script>
+</body>
+
+</html>
